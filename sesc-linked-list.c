@@ -20,7 +20,7 @@ void pop_front(Node **head) {
   if (head == NULL) {
     printf("empty");
   } else {
-    Node *ear = (Node*) malloc(sizeof(Node)); 
+    Node *ear = NULL; 
     ear = (*head);
     int val = ear->value;
     (*head) = (*head)->next;
