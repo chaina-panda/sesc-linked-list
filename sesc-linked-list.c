@@ -22,11 +22,11 @@ void pop_front(Node **head) {
   if (head == NULL) {
     printf("empty");
   } else {
-  ear = (*head);
-  val = ear->value;
-  (*head) = (*head)->next;
-  free(ear);
-  printf("%d", val);
+    ear = (*head);
+    val = ear->value;
+    (*head) = (*head)->next;
+    free(ear);
+    printf("%d", val);
   }
   printf("\n");
 }
@@ -41,12 +41,17 @@ Node* Last(Node *head) {
   return head;
 }
 
-void push_back(Node *head, int value) {
-  Node *last = Last(head);
+void push_back(Node **head, int value) {
+
+  Node *last = Last(*head);
   Node *ear = (Node*) malloc(sizeof(Node));
   ear->value = value;
   ear->next = NULL;
-  last->next = ear;
+  if (last) {
+    *head = ear;
+  } else {
+    last->next = ear;
+  }
   printf("%d", value);
   printf("\n");
 }
@@ -69,14 +74,11 @@ void peek_back(Node *head){
 }
 
 void size(Node *head){
-  int i;
-  if (head != NULL) {
-    for(i = 1; head->next; i++ ){
-      head = head->next;
-    }
-    printf("%d", i);
+  int i = 0;
+  for(i; head; i++ ){
+    head = head->next;
   }
-  else {printf("0");}
+  printf("%d", i);
   printf("\n");
 }
 
@@ -118,7 +120,7 @@ int main(void) {
     if (!strcmp(OP, "push-back")){
       int num = 0; 
       scanf("%d", &num);  
-      push_back(head, num);
+      push_back(&head, num);
       continue; 
     } 
     if (!strcmp(OP, "pop-front")){ 
