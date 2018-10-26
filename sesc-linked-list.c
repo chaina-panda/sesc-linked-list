@@ -69,14 +69,11 @@ void peek_back(Node *head){
 }
 
 void size(Node *head){
-  int i;
-  if (head != NULL) {
-    for(i = 1; head->next; i++ ){
-      head = head->next;
-    }
-    printf("%d", i);
+  int i = 0;
+  for(i; head; i++ ){
+    head = head->next;
   }
-  else {printf("0");}
+  printf("%d", i);
   printf("\n");
 }
 
