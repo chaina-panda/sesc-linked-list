@@ -17,15 +17,14 @@ void push_front(Node **head, int num) {
 }
 
 void pop_front(Node **head) {
-  if (head == NULL) {
+  if (*head == NULL) {
     printf("empty");
   } else {
     Node *ear = NULL; 
     ear = (*head);
-    int val = ear->value;
+    printf("%d", ear->value);
     (*head) = (*head)->next;
     free(ear);
-    printf("%d", val);
   }
   printf("\n");
 }
